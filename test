@@ -1,0 +1,20 @@
+#!/bin/bash
+
+read -p "Qual o número do módulo? " module
+read -p "Qual o número do desafio? " challange
+
+file="${module}/${challange}/${challange}.py"
+input="${module}/${challange}/input.txt"
+
+if test -f "$file"
+then
+    if test -f "$input"
+    then
+        echo "Encontrado arquivo de exemplo input.txt. Usando como entrada de teste."
+        python3 $file < $input
+    else
+        python3 $file
+    fi
+else
+    echo "$file do not exists."
+fi
